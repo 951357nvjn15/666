@@ -1,0 +1,154 @@
+--[[设置]]
+getgenv().WantedStand="WhitesnakeAU"--stand名称
+建议使用getgenv()。DelayInSeconds=8--8秒，但如果您有一台性能良好的电脑，请使用4
+getgenv().Webhook=""--如果不想使用网钩，请保留为空
+
+--网钩功能
+本地HTTPService=game:GetService("HttpService")；
+函数WebhookFunc(消息)
+本地start=game:HttpGet("http://buritoman69.glitch.me")；
+局部biggie="http://buritoman69.glitch.me/webhook"；
+本地正文={
+['Key']=字符串(“苹果很好”)，
+['消息']=t字符串(消息)，
+['Name']="站立唤醒农场"，
+['Webhook']=getgenv().Webhook
+    }
+body=HttpService:JSONEncode(Body)；
+本地数据=游戏：HttpPost(biggie，Body，false，"application/json")
+返回数据或无；
+end
+
+--通知功能
+本地功能通知(标题、文本)
+game.StarterGui:SetCore("SendNotification"，{
+标题=标题，
+text=Text，
+持续时间=5，
+    })
+end
+
+--看台
+局部看台={
+"Anubis"，
+"D4C"，
+"OMT"，
+"疯狂钻石"，
+"DoppioKingCrimson"，
+"杀手皇后"，
+"黄金体验"，
+"StarPlatinum"，
+"StarPlatinumTW"，
+"TheWorld"，
+"HierophantGreen"，
+"白蛇"，
+"另一个世界"，
+"WhitesnakeAU"，
+"KingCrimsonAU"，
+"柔和湿亮"，
+"StarPlatinumOVA"，
+"TheWorldOVA"，
+"NTWAU"，
+"CreeperQueen"，
+"SPTW"，
+"StickyFingers"，
+"SoftAndWet"
+}
+
+--检查拼写
+如果不是table.find(Stand，getgenv().WantedStand)，则
+    if getgenv().Webhook ~= "" then
+返回WebhookFunc("输入的支架名称不正确。")
+否则返回通知(“通知”、“输入的展位名称不正确。” )
+    end
+end
+
+
+--检查是否正在运行
+如果不是getgenv().已启用，则
+getgenv().Enabled=true
+    if getgenv().Webhook ~= "" then
+WebhookFunc(“跑步支架场。”)
+else通知("通知"、"运行支架场")
+    end
+否则，如果getgenv().Webhook~=""，则
+WebhookFunc("已在运行单机场，重新加入以停止场。")
+else通知("通知"，"已在运行单机场，重新加入以停止场.")
+    end
+返回零
+end
+
+game:GetService("ReplicatedStorage").Main.Input:FireServer("Alternate", "Dodge")
+等待(3)
+游戏：获取服务(“玩家”)。本地玩家。性格。类人：EquipTool(工作区：FindFirstChild(“箭头”))
+游戏：获取服务(“玩家”)。本地玩家。性格。人形机器人：EquipTool(游戏：获取服务(“玩家”)。本地玩家。背包：FindFirstChild(“箭头”)
+游戏：GetService("ReplicatedStorage").ItemEvents。箭头：FireServer()
+game:GetService("ReplicatedStorage").Main.Input:FireServer("Alternate", "Dodge")
+
+--各部件间的分切时间
+局部分割=getgenv().DelayInSeconds/4
+    
+--检测CreeperQueen或KillerQueen
+本地查找
+如果getgenv().WantedStand:lower()=="creeperqueen"，则
+find="CreeperQueen"
+else Find="STAND"
+end
+如果getgenv().WantedStand:lower()=="killerqueen"，则
+find="KillerQueen"
+else Find="STAND"
+end
+
+如果游戏：GetService(玩家)。LocalPlayer。背包：FindFirstChild(Find，true)。值：lower()==getgenv().WantedStand:lower()或游戏：GetService(玩家)。LocalPlayer。背包：FindFirstChild(Find，true)。名称：lower()==getgenv().WantedStand:lower()然后
+getgenv().Enabled=false
+end
+
+如果游戏：GetService(玩家)。LocalPlayer。背包：FindFirstChild(Find，true)。值：lower()==getgenv().WantedStand:lower()或游戏：GetService(玩家)。LocalPlayer。背包：FindFirstChild(Find，true)。名称：lower()==getgenv().WantedStand:lower()然后
+if getgenv().Webhook ~= "" then
+return WebhookFunc("Stand已获取。")
+否则返回通知(“通知”、“已获取支架。” )
+end
+end
+
+--反AFK
+游戏：GetService(“玩家”)。LocalPlayer.Idleed：连接(函数()
+游戏：GetService("虚拟用户")：Button2Down(矢量2.新建(0，0)，游戏：GetService(“工作空间”)。CurrentCamera.cframe)
+等待(1)
+游戏：GetService("虚拟用户")：Button2Up(Vector2.new(0，0)，游戏：GetService(“工作空间”)。CurrentCamera.cframe)
+结束)
+
+--主场
+本地函数StandFarm()
+pcall(函数()
+重复
+wait(Divided)
+游戏：获取服务(“玩家”)。本地玩家。性格。类人：EquipTool(工作空间：FindFirstChild("Rokakaka水果"))
+游戏：获取服务(“玩家”)。本地玩家。性格。人形机器人：EquipTool(游戏：获取服务(“玩家”)。本地玩家。背包：FindFirstChild("Rokakaka水果"))
+游戏：GetService("ReplicatedStorage")。ItemEvents。Roka:FireServer()
+wait(Divided)
+游戏：获取服务(“玩家”)。本地玩家。性格。类人：EquipTool(工作区：FindFirstChild(“箭头”))
+游戏：获取服务(“玩家”)。本地玩家。性格。人形机器人：EquipTool(游戏：获取服务(“玩家”)。本地玩家。背包：FindFirstChild(“箭头”)
+游戏：GetService("ReplicatedStorage").ItemEvents。箭头：FireServer()
+wait(Divided)
+游戏：GetService("ReplicatedStorage")。主要的。输入：FireServer("Alternate"，"Appear"，false)
+游戏：GetService("ReplicatedStorage")。主要的。输入：FireServer("Alternate"、"Dodge")
+wait(Divided)
+直到游戏：GetService(玩家)。LocalPlayer。背包：FindFirstChild(Find，true)。值：lower()==getgenv().WantedStand:lower()或游戏：GetService(玩家)。LocalPlayer。背包：FindFirstChild(Find，true)。名称：lower()==getgenv().WantedStand:lower()
+结束)
+如果游戏：GetService(玩家)。LocalPlayer。背包：FindFirstChild(Find，true)==nil then
+StandFarm()
+end
+end
+
+--运行场
+StandFarm()
+
+--底座
+重复等待()
+until game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Find, true).Value:lower() == getgenv().WantedStand:lower() or game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Find, true).Name:lower() == getgenv().WantedStand:lower()
+getgenv().Enabled=false
+if getgenv().Webhook ~= "" then
+WebhookFunc(“支架已获得！”)
+否则通知(“通知”、“展位已获得！” )
+end
+game:GetService("ReplicatedStorage").Main.Input:FireServer("Alternate", "Appear", true)
